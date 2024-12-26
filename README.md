@@ -1,4 +1,4 @@
-# Data Science
+# Data Scientist
 
 ### Education
 Math-Computer Science, B.S.
