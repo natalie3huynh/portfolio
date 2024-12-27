@@ -1,11 +1,9 @@
 # Data Scientist
-Languages/Environments: Python, C,  Java, SAS (Basic), R programming, SQL, MATLAB, Linux
-
-
+Languages/Environments: Python, C,  Java, SAS (Basic), R programming, SQL, MATLAB, Linux   
 Tools/Libraries/Packages: MS Applications, GitHub, git, Pandas, ggplot2, Quarto, RStudio, Seaborn, Tidyverse
 
 ### Education
-Math-Computer Science, B.S.
+Math-Computer Science, B.S.  
 Cognitive Science Minor
 
 ### Work Experience
