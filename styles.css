@@ -1,5 +1,6 @@
 :root {
   --color-accent: oklch(65% 50% 0);
+  --color-accent-soft: oklch(from var(--color-accent) 95% 5% h);
 }
 
 html {
