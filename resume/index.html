@@ -1,78 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resume</title>
-    <link rel="stylesheet" href="../style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume</title>
+  <link rel="stylesheet" href="../style.css">
 </head>
-    <nav>
+
+<body class="resume">
+
+  <nav>
     <a href="../index.html">Home</a>
     <a href="../projects/index.html">Projects</a>
     <a href="../contact/index.html">Contact</a>
-    <a href="index.html">Resume</a>
+    <a href="index.html" class="current">Resume</a>
     <a href="https://github.com/natalie3huynh" target="_blank">Profile</a>
-    </nav>
-    <body>
-        <section>
-            <h2>Education</h2>
-            <p>B.S. Mathematics-Computer Science, Minor: Data Science</p>
-        </section>
-        <section>
-            <h2>Work Experience</h2>
-            <article>
-                <header>
-                    <h3>Business Transformation Intern - Niagara Bottling</h3>
-                    <p><time>June 2025</time> – <time>September 2025</time></p>
-                </header>
+  </nav>
 
-                <ul>
-                    <li>Collaborate with Supply Chain stakeholders to map end-to-end order roadmap in Visio, aligning teams on current-state workflows and identifying areas for improvement</li>
-                    <li>Conduct data validation for IT departments to maintain accurate sales order data. Leverage in-house AI chatbot to optimize order processing for over 1.1 million orders. Extract, transform, and load order data from Oracle Applications to analyze order defects in Python and create recommendations for business process optimization in the Order to Cash lifecycle</li>
-                    <li>Create data models in Excel and effectively deliver data storytelling through data visualizations and statistics in Excel to provide actionable insights, improving the Perfect Order rate by 13% for a projected annual cost savings of $115k</li>
-                    <li>Expand modular end-to-end solutions to additional customers to implement actionable insights for Customer Service leadership, documenting reproducible code and scaling projected savings to $3M</li>
-                </ul>
-                <header>
-                    <h3>Biostatistics and Data Science Intern - UCI</h3>
-                    <p><time>June 2024</time> – <time>August 2024</time></p>
-                </header>
-                <ul>
-                    <li>Train in data science bootcamp to apply inferential/Bayesian statistics in R to transform and visualize sample clinical data</li>
-                    <li>Lead an NIH-funded research initiative with a team of 5 to analyze hospital records from 6,000 patients. Apply machine learning models such as PCA, GLMs, K-means clustering, and fixed/mixed effects models to identify predictors and forecast typhus spread</li>
-                    <li>Present data to the Fred Hutch Cancer Center to inform epidemiological strategies in public health research</li>
-                </ul>
-                <header>
-                    <h3>Career Peer Educator and Marketing Intern - UC San Diego Career Center</h3>
-                    <p><time>June 2022</time> – <time>June 2025</time></p>
-                </header>
-                <ul>
-                    <li>Developed Python web-scraping workflows by parsing HTML from UCSD sites, automating the collection and organization of data on 600+ student organizations into clean, tidy datasets for Associate Directors</li>
-                    <li>Direct UX research and test usability features of the main site in accordance with web accessibility guidelines. Present at the Future of Work Conference on methods to improve user interfaces to non-technical and technical companies</li>
-                </ul>
-            </article>
-        </section>
-        <section>
-            <h2>Leadership</h2>
-            <article>
-                <header>
-                    <h3>Undergraduate Data Science Research Assistant</h3>
-                    <p><time>September 2023</time> – <time>September 2025</time></p>
-                </header>
-                <ul>
-                    <li>Collect survey data from 700+ students to analyze interpersonal dynamics in group programming projects</li>
-                    <li>Leverage data visualization tools and generalized linear models (GLMs) in R to identify patterns in how individuals engage within teams to optimize group formation strategies and enhance collaborative workflows in upper-division Data Science courses</li>
-                </ul>
-            </article>
-        </section>
-        <section>
-            <header>
-                <h2>Skills & Core Competencies</h2>
-            </header>
-            <ul>
-                <li>Programming languages: Python, SQL, C, Java, R</li>
-                <li>Applications/Tools/ Packages: MS Office Applications (Outlook, Excel, PowerPoint, Word),  Google Sheets, Excel, Visio, Oracle EBS, Oracle OTM, Tableau,  git, Pandas,  RStudio,  Matplotlib, Scikit-learn, PyTorch, TensorFlow, XGBoost, NumPy</li>
-                <li>Core Competencies: Business Process Improvement, Agile Methodologies, Data Visualization, Data Validation, Statistical Modeling, ETL, Strong Verbal Communication Skills, Detail Oriented, Self-Starter, Solution Oriented, Strong Analytical and Problem Solving Skills, Process Mining, Collaborative, Project Management, Reproducible Analysis Skills</li>
-            </ul>
-        </section>
-    </body>
+  <main>
+
+    <!-- Header / Name -->
+    <section>
+      <h1>Natalie Huynh</h1>
+      <p>Mathematics–Computer Science • Data Science • natalie3huynh@gmail.com • GitHub</p>
+    </section>
+
+    <!-- Education -->
+    <section>
+      <h2>Education</h2>
+      <p><strong>B.S. Mathematics–Computer Science</strong>, Minor in Data Science</p>
+    </section>
+
+    <!-- Experience -->
+    <section>
+      <h2>Experience</h2>
+
+      <!-- Job 1 -->
+      <article>
+        <header>
+          <h3>Niagara Bottling</h3>
+          <p>Business Transformation Intern • Jun 2025 – Sep 2025</p>
+        </header>
+        <ul>
+          <li>Mapped end-to-end order workflows, aligning stakeholders and identifying process improvements</li>
+          <li>Analyzed 1.1M+ orders using Python to identify defects and optimize Order-to-Cash processes</li>
+          <li>Improved Perfect Order rate by 13%, saving $115k annually</li>
+          <li>Scaled solutions across customers, projecting $3M in savings</li>
+        </ul>
+      </article>
+
+      <!-- Job 2 -->
+      <article>
+        <header>
+          <h3>University of California, Irvine</h3>
+          <p>Biostatistics and Data Science Intern • Jun 2024 – Aug 2024</p>
+        </header>
+        <ul>
+          <li>Applied Bayesian and inferential statistics in R to analyze clinical datasets</li>
+          <li>Led team analyzing 6,000+ patient records using PCA, GLMs, and clustering models</li>
+          <li>Presented findings to the Fred Hutch Cancer Center to support public health strategies</li>
+        </ul>
+      </article>
+
+      <!-- Job 3 -->
+      <article>
+        <header>
+          <h3>UC San Diego Career Center</h3>
+          <p>Career Peer Educator & Marketing Intern • Jun 2022 – Jun 2025</p>
+        </header>
+        <ul>
+          <li>Built Python web-scraping pipelines to organize data on 600+ student organizations</li>
+          <li>Conducted UX research and improved accessibility of university web platforms</li>
+          <li>Presented UI/UX improvements at the Future of Work Conference</li>
+        </ul>
+      </article>
+
+    </section>
+
+    <!-- Leadership -->
+    <section>
+      <h2>Leadership</h2>
+
+      <article>
+        <header>
+          <h3>Undergraduate Data Science Research Assistant</h3>
+          <p>Sep 2023 – Sep 2025</p>
+        </header>
+        <ul>
+          <li>Analyzed survey data from 700+ students to study collaboration patterns in programming teams</li>
+          <li>Used GLMs and visualization tools in R to improve group formation strategies</li>
+        </ul>
+      </article>
+
+    </section>
+
+    <!-- Skills -->
+    <section>
+      <h2>Skills</h2>
+      <ul>
+        <li><strong>Languages:</strong> Python, SQL, C, Java, R</li>
+        <li><strong>Tools:</strong> Pandas, Scikit-learn, Tableau, TensorFlow, PyTorch, Git, NumPy</li>
+        <li><strong>Other:</strong> Data Visualization, ETL, Statistical Modeling, Process Improvement, Agile</li>
+      </ul>
+    </section>
+
+  </main>
+
+</body>
 </html>
