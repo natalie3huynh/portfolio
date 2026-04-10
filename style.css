@@ -41,3 +41,31 @@ nav a:hover {
   border-bottom: 0.4em solid var(--color-accent);
   padding-bottom: 0.1em;
 }
+
+form {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1em;
+}
+
+/* labels span full grid row */
+form label {
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column: 1 / -1;
+  align-items: center;
+}
+
+/* inputs & textarea styling */
+input,
+textarea {
+  width: 100%;
+  box-sizing: border-box;
+  font: inherit;
+}
+
+/* button spans full width */
+button {
+  grid-column: 1 / -1;
+  font: inherit;
+}

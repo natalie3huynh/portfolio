@@ -1,46 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact</title>
-    <link rel="stylesheet" href="../style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact</title>
+
+  <!-- correct path to root CSS -->
+  <link rel="stylesheet" href="../style.css">
 </head>
+
 <body>
 
-    <!-- Navigation -->
-    <nav>
-  <a href="../index.html">Home</a>
-  <a href="../projects/index.html">Projects</a>
-  <a href="index.html">Contact</a>
-  <a href="../resume/index.html">Resume</a>
-  <a href="https://github.com/natalie3huynh" target="_blank">Profile</a>
-</nav>
+  <!-- Navigation (same as other pages) -->
+  <nav>
+    <a href="../index.html">Home</a>
+    <a href="../projects/index.html">Projects</a>
+    <a href="index.html" class="current">Contact</a>
+    <a href="../resume/index.html">Resume</a>
+    <a href="https://github.com/natalie3huynh" target="_blank">Profile</a>
+  </nav>
 
-    <h1>Contact</h1>
+  <h1>Contact</h1>
 
-    <!-- Contact Form -->
-    <form action="mailto:nataliehuynh124@gmail.com" method="POST" enctype="text/plain">
-        <label>
-            Email:
-            <input name="email" type="email" required>
-        </label>
-        <br><br>
-        <label>
-            Subject:
-            <input name="subject">
-        </label>
-        <br><br>
+  <!-- Contact Form -->
+  <form action="mailto:nataliehuynh124@gmail.com" method="POST" enctype="text/plain">
 
-        <label>
-            Body:
-            <textarea name="body"></textarea>
-        </label>
-        <br><br>
+    <label>
+      Email:
+      <input name="email" type="email" required>
+    </label>
 
-        <button>Submit</button>
+    <label>
+      Subject:
+      <input name="subject">
+    </label>
 
-    </form>
+    <label>
+      Body:
+      <textarea name="body"></textarea>
+    </label>
+
+    <button type="submit">Submit</button>
+
+  </form>
 
 </body>
 </html>
