@@ -35,8 +35,8 @@ nav a.current {
   padding-bottom: 0.1em;
 }
 
-/* hover effect using accent color */
 nav a:hover {
+  background-color: var(--color-accent-soft);
   border-bottom: 0.4em solid var(--color-accent);
   padding-bottom: 0.1em;
 }
