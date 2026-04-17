@@ -1,6 +1,9 @@
 :root {
   --color-accent: oklch(65% 50% 0);
   --color-accent-soft: oklch(from var(--color-accent) 95% 5% h);
+
+  /* FIX: shared border color that works in both modes */
+  --border-color: oklch(50% 10% 200 / 40%);
 }
 
 html {
@@ -12,12 +15,14 @@ body {
   font: 100%/1.5 system-ui;
   max-width: 100ch;
   margin-inline: max(1em, (100% - 100ch) / 2);
+
+  /* FIX: system-aware colors */
+  background-color: canvas;
+  color: canvastext;
 }
 
 /* nav bar */
 nav {
-  --border-color: oklch(50% 10% 200 / 40%);
-
   display: flex;
   margin-bottom: 1em;
   border-bottom: 1px solid var(--border-color);
@@ -39,9 +44,9 @@ nav a.current {
   padding-bottom: 0.1em;
 }
 
-/* hover state */
+/* hover state (FIXED for dark mode) */
 nav a:hover {
-  background-color: var(--color-accent-soft);
+  background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
   border-bottom: 0.4em solid var(--color-accent);
   padding-bottom: 0.1em;
 }
@@ -98,18 +103,19 @@ h1, h2, h3, h4, h5, h6 {
   text-wrap: balance;
 }
 
+/* FIXED resume dark mode */
 body.resume {
-  background: oklch(95% 2% 250);
+  background-color: canvas;
   padding: 2em;
 }
 
 .resume main {
-  background: white;
+  background-color: canvas;
   max-width: 75ch;
   margin: auto;
   padding: 2.5em 3em;
   border-radius: 10px;
-  box-shadow: 0 6px 24px rgba(0,0,0,0.08);
+  box-shadow: 0 6px 24px color-mix(in oklch, black 15%, transparent);
   line-height: 1.5;
 }
 
@@ -120,7 +126,7 @@ body.resume {
 
 .resume section:first-of-type p {
   margin-top: 0;
-  color: #555;
+  color: color-mix(in oklch, canvastext 70%, transparent);
 }
 
 .resume h2 {
@@ -148,7 +154,7 @@ body.resume {
 
 .resume article header p {
   font-size: 0.9rem;
-  color: #666;
+  color: color-mix(in oklch, canvastext 60%, transparent);
   white-space: nowrap;
   margin: 0;
 }
