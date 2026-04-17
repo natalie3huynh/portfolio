@@ -16,9 +16,11 @@ body {
 
 /* nav bar */
 nav {
+  --border-color: oklch(50% 10% 200 / 40%);
+
   display: flex;
   margin-bottom: 1em;
-  border-bottom: 1px solid oklch(80% 3% 200);
+  border-bottom: 1px solid var(--border-color);
 }
 
 /* links */
@@ -33,10 +35,11 @@ nav a {
 
 /* current page */
 nav a.current {
-  border-bottom: 0.4em solid oklch(80% 3% 200);
+  border-bottom: 0.4em solid var(--border-color);
   padding-bottom: 0.1em;
 }
 
+/* hover state */
 nav a:hover {
   background-color: var(--color-accent-soft);
   border-bottom: 0.4em solid var(--color-accent);
