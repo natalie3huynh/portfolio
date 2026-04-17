@@ -5,6 +5,7 @@
 
 html {
   accent-color: var(--color-accent);
+  color-scheme: light dark;
 }
 
 body {
