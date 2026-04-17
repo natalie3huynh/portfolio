@@ -7,7 +7,7 @@
 
 html {
   accent-color: var(--color-accent);
-  color-scheme: light dark;
+  color-scheme: light dark; /* enables OS auto mode */
 }
 
 body {
@@ -19,14 +19,29 @@ body {
   color: canvastext;
 }
 
-/* nav bar */
+/* =========================
+   THEME SWITCH (STEP 4.3)
+========================= */
+.color-scheme {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 80%;
+}
+
+.color-scheme select {
+  font: inherit;
+}
+
+/* =========================
+   NAV BAR
+========================= */
 nav {
   display: flex;
   margin-bottom: 1em;
   border-bottom: 1px solid var(--border-color);
 }
 
-/* links */
 nav a {
   flex: 1;
   display: block;
@@ -36,19 +51,20 @@ nav a {
   padding: 0.5em;
 }
 
-/* current page */
 nav a.current {
   border-bottom: 0.4em solid var(--border-color);
   padding-bottom: 0.1em;
 }
 
-/* hover state */
 nav a:hover {
   background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
   border-bottom: 0.4em solid var(--color-accent);
   padding-bottom: 0.1em;
 }
 
+/* =========================
+   FORMS
+========================= */
 form {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -63,7 +79,8 @@ form label {
 }
 
 input,
-textarea {
+textarea,
+select {
   width: 100%;
   box-sizing: border-box;
   font: inherit;
@@ -74,6 +91,9 @@ button {
   font: inherit;
 }
 
+/* =========================
+   PROJECTS GRID
+========================= */
 .projects {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
@@ -90,6 +110,9 @@ button {
   margin: 0;
 }
 
+/* =========================
+   TYPOGRAPHY
+========================= */
 h1 {
   font-size: 400%;
 }
@@ -99,30 +122,23 @@ h1, h2, h3, h4, h5, h6 {
   text-wrap: balance;
 }
 
-/* FIXED resume contrast (IMPORTANT CHANGE) */
+/* =========================
+   RESUME (FIXED DARK MODE)
+========================= */
 body.resume {
   background-color: canvas;
   padding: 2em;
 }
 
 .resume main {
-  /* FIX: no longer blends into background */
   background-color: color-mix(in oklch, canvas 92%, canvastext 8%);
-
   max-width: 75ch;
   margin: auto;
   padding: 2.5em 3em;
   border-radius: 10px;
 
-  /* FIX: works in both light & dark mode */
   box-shadow: 0 6px 24px color-mix(in oklch, canvastext 15%, transparent);
-
   line-height: 1.5;
-}
-
-.resume h1 {
-  font-size: 2.5rem;
-  margin-bottom: 0.2em;
 }
 
 .resume section:first-of-type p {

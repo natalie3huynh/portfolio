@@ -21,6 +21,57 @@ const BASE_PATH =
     ? "/"
     : "/portfolio/";
 
+/* =========================
+   THEME SWITCHER (STEP 4.2–4.5)
+========================= */
+
+// Add UI
+document.body.insertAdjacentHTML(
+  "afterbegin",
+  `
+  <label class="color-scheme">
+    Theme:
+    <select>
+      <option value="auto">Automatic</option>
+      <option value="light">Light</option>
+      <option value="dark">Dark</option>
+    </select>
+  </label>
+  `
+);
+
+// Get select element
+const select = document.querySelector(".color-scheme select");
+
+// Function to apply theme
+function setColorScheme(mode) {
+  if (mode === "auto") {
+    document.documentElement.style.removeProperty("color-scheme");
+  } else {
+    document.documentElement.style.setProperty("color-scheme", mode);
+  }
+
+  select.value = mode;
+}
+
+// Listen for changes
+select.addEventListener("input", (event) => {
+  const mode = event.target.value;
+  setColorScheme(mode);
+  localStorage.colorScheme = mode;
+});
+
+// Load saved preference
+if ("colorScheme" in localStorage) {
+  setColorScheme(localStorage.colorScheme);
+} else {
+  setColorScheme("auto");
+}
+
+/* =========================
+   NAVIGATION (STEP 3)
+========================= */
+
 // Create nav and insert into page
 let nav = document.createElement("nav");
 document.body.prepend(nav);
