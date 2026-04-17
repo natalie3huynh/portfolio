@@ -2,7 +2,6 @@
   --color-accent: oklch(65% 50% 0);
   --color-accent-soft: oklch(from var(--color-accent) 95% 5% h);
 
-  /* FIX: shared border color that works in both modes */
   --border-color: oklch(50% 10% 200 / 40%);
 }
 
@@ -16,7 +15,6 @@ body {
   max-width: 100ch;
   margin-inline: max(1em, (100% - 100ch) / 2);
 
-  /* FIX: system-aware colors */
   background-color: canvas;
   color: canvastext;
 }
@@ -44,7 +42,7 @@ nav a.current {
   padding-bottom: 0.1em;
 }
 
-/* hover state (FIXED for dark mode) */
+/* hover state */
 nav a:hover {
   background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
   border-bottom: 0.4em solid var(--color-accent);
@@ -57,7 +55,6 @@ form {
   gap: 1em;
 }
 
-/* grid row */
 form label {
   display: grid;
   grid-template-columns: subgrid;
@@ -72,7 +69,6 @@ textarea {
   font: inherit;
 }
 
-/* button spans full width */
 button {
   grid-column: 1 / -1;
   font: inherit;
@@ -103,19 +99,24 @@ h1, h2, h3, h4, h5, h6 {
   text-wrap: balance;
 }
 
-/* FIXED resume dark mode */
+/* FIXED resume contrast (IMPORTANT CHANGE) */
 body.resume {
   background-color: canvas;
   padding: 2em;
 }
 
 .resume main {
-  background-color: canvas;
+  /* FIX: no longer blends into background */
+  background-color: color-mix(in oklch, canvas 92%, canvastext 8%);
+
   max-width: 75ch;
   margin: auto;
   padding: 2.5em 3em;
   border-radius: 10px;
-  box-shadow: 0 6px 24px color-mix(in oklch, black 15%, transparent);
+
+  /* FIX: works in both light & dark mode */
+  box-shadow: 0 6px 24px color-mix(in oklch, canvastext 15%, transparent);
+
   line-height: 1.5;
 }
 
