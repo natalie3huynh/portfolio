@@ -100,3 +100,23 @@ for (let p of pages) {
   // Add to nav
   nav.appendChild(a);
 }
+
+// Get form (only exists on contact page)
+const form = document.querySelector("form");
+
+form?.addEventListener("submit", (event) => {
+  event.preventDefault(); // stop default mailto behavior
+
+  const data = new FormData(form);
+
+  let params = [];
+
+  for (let [name, value] of data) {
+    params.push(`${name}=${encodeURIComponent(value)}`);
+  }
+
+  const url = `${form.action}?${params.join("&")}`;
+
+  // Open email client with properly encoded fields
+  location.href = url;
+});
