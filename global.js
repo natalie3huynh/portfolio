@@ -21,11 +21,9 @@ const BASE_PATH =
     ? "/"
     : "/portfolio/";
 
-/* =========================
-   THEME SWITCHER (STEP 4.2–4.5)
-========================= */
+//Switch Theme: light, dark, automatic
 
-// Add UI
+// UI
 document.body.insertAdjacentHTML(
   "afterbegin",
   `
@@ -43,7 +41,7 @@ document.body.insertAdjacentHTML(
 // Get select element
 const select = document.querySelector(".color-scheme select");
 
-// Function to apply theme
+// theme application
 function setColorScheme(mode) {
   if (mode === "auto") {
     document.documentElement.style.removeProperty("color-scheme");
@@ -68,9 +66,7 @@ if ("colorScheme" in localStorage) {
   setColorScheme("auto");
 }
 
-/* =========================
-   NAVIGATION (STEP 3)
-========================= */
+/* Navigation bar*/
 
 // Create nav and insert into page
 let nav = document.createElement("nav");
@@ -80,10 +76,10 @@ document.body.prepend(nav);
 for (let p of pages) {
   let url = p.url;
 
-  // Fix internal links for deployment
+
   url = !url.startsWith("http") ? BASE_PATH + url : url;
 
-  // Create link element
+  //link element
   let a = document.createElement("a");
   a.href = url;
   a.textContent = p.title;
