@@ -136,3 +136,6 @@ export async function fetchJSON(url) {
     console.error('Error fetching or parsing JSON data:', error);
   }
 }
+
+//testing:
+fetchJSON('./projects.json');
