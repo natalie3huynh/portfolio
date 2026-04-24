@@ -116,3 +116,18 @@ form?.addEventListener("submit", (event) => {
   // Open email client with properly encoded fields
   location.href = url;
 });
+
+//step 1.2
+export async function fetchJSON(url) {
+  try {
+    // Fetch the JSON file from the given URL
+    const response = await fetch(url);
+    
+    //error handling
+    if (!response.ok) {
+      throw new Error(`Failed to fetch projects: ${response.statusText}`);
+    }
+  } catch (error) {
+    console.error('Error fetching or parsing JSON data:', error);
+  }
+}
