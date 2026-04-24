@@ -138,4 +138,4 @@ export async function fetchJSON(url) {
 }
 
 //testing:
-fetchJSON('./projects.json');
+fetchJSON('./lib.json');
