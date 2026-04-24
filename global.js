@@ -138,6 +138,6 @@ export async function fetchJSON(url) {
 }
 
 //better testing
-fetchJSON('../lib/projects.json').then(data => {
-  console.log("DATA:", data);
-});
+// fetchJSON('../lib/projects.json').then(data => {
+//   console.log("DATA:", data);
+// });
