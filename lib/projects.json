@@ -1,19 +1,19 @@
 [
     {
         "title": "Niagara Bottling: Order Insights",
-        "year": "2025",
+        "year": 2025,
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Creating data visualizations and recommendations on how to improve order rates based off of KPIs."
     },
     {
         "title": "Spread of Typhus Across Laos: NIH Biostatistics and Data Science Research",
-        "year": "2024",
+        "year": 2024,
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Studying the spread of urban and rural typhus across Laos using GLMs, PCA, and more."
     },
     {
         "title": "UCLA Nanovation: Nanotechnology Design",
-        "year": "2022",
+        "year": 2022,
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Designing cold chain transport solutions for the biopharma industry."
     },
