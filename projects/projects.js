@@ -6,7 +6,7 @@ const projectsContainer = document.querySelector('.projects');
 const titleElement = document.querySelector('.projects-title');
 
 // update title with count
-titleElement.textContent = `Projects (${projects.length})`;
+titleElement.textContent = `${projects.length} Projects`;
 
 // render projects
 renderProjects(projects, projectsContainer, 'h2');
