@@ -7,7 +7,7 @@
 
 html {
   accent-color: var(--color-accent);
-  color-scheme: light dark; /* enables OS auto mode */
+  color-scheme: light dark;
 }
 
 body {
@@ -19,6 +19,9 @@ body {
   color: canvastext;
 }
 
+/* =========================
+   THEME SWITCHER
+========================= */
 .color-scheme {
   position: static;
   display: flex;
@@ -43,11 +46,10 @@ nav {
 
 nav a {
   flex: 1;
-  display: block;
-  text-decoration: none;
-  color: inherit;
   text-align: center;
   padding: 0.5em;
+  text-decoration: none;
+  color: inherit;
 }
 
 nav a.current {
@@ -91,22 +93,51 @@ button {
 }
 
 /* =========================
-   PROJECTS GRID
+   PROJECTS GRID (FINAL CLEAN VERSION)
 ========================= */
 .projects {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
-  gap: 1em;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+  align-items: start;
+
+   margin-top: 2rem;
 }
 
+/* =========================
+   PROJECT CARDS
+========================= */
 .projects article {
-  display: grid;
-  grid-template-rows: subgrid;
-  grid-row: span 3;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  padding: 1rem;
+  border-radius: 8px;
+
+  background-color: canvas;
+  color: canvastext;
+
+  border: 1px solid color-mix(in oklch, canvastext 20%, transparent);
+
+  box-shadow: 0 2px 10px color-mix(in oklch, canvastext 10%, transparent);
+
+  transition: transform 0.15s ease;
 }
 
-.projects h2 {
-  margin: 0;
+.projects article:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-accent);
+}
+
+/* =========================
+   PROJECT IMAGES
+========================= */
+.projects img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 6px;
 }
 
 /* =========================
@@ -121,8 +152,32 @@ h1, h2, h3, h4, h5, h6 {
   text-wrap: balance;
 }
 
+.projects h2,
+.projects h3 {
+  margin: 0;
+}
+
+.projects p {
+  margin: 0;
+  line-height: 1.4;
+}
+
 /* =========================
-   RESUME (FIXED DARK MODE)
+   YEAR
+========================= */
+.year {
+  font-size: 0.9rem;
+  font-weight: 600;
+  opacity: 0.7;
+  margin-top: 0.25em;
+
+  color: gray;
+  font-family: Baskerville, serif;
+  font-variant-numeric: oldstyle-nums;
+}
+
+/* =========================
+   RESUME PAGE
 ========================= */
 body.resume {
   background-color: canvas;
@@ -135,93 +190,27 @@ body.resume {
   margin: auto;
   padding: 2.5em 3em;
   border-radius: 10px;
-
   box-shadow: 0 6px 24px color-mix(in oklch, canvastext 15%, transparent);
   line-height: 1.5;
 }
 
-.resume section:first-of-type p {
-  margin-top: 0;
-  color: color-mix(in oklch, canvastext 70%, transparent);
-}
-
-.resume h2 {
-  font-size: 0.95rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-top: 2em;
-  margin-bottom: 0.6em;
-  border-bottom: 2px solid var(--color-accent);
-  padding-bottom: 0.3em;
-}
-
-.resume h3 {
-  font-size: 1rem;
-  margin: 0;
-}
-
-.resume article header {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 1em;
-  font-weight: 500;
-}
-
-.resume article header p {
-  font-size: 0.9rem;
-  color: color-mix(in oklch, canvastext 60%, transparent);
-  white-space: nowrap;
-  margin: 0;
-}
-
-.resume ul {
-  margin: 0.5em 0 1.2em;
-  padding-left: 1.2em;
-}
-
-.resume li {
-  margin-bottom: 0.35em;
-}
-
-.resume strong {
-  font-weight: 600;
-}
-
-.resume article {
-  margin-bottom: 1.5em;
-}
-
-.resume p {
-  margin: 0.2em 0;
-}
-
 /* =========================
-   GitHub Profile Stats
-   ========================= */
-
-#profile-stats {
-  margin-top: 1rem;
-}
-
+   GITHUB STATS
+========================= */
 #profile-stats dl {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
   text-align: center;
-
-  /* optional polish */
   padding: 1rem;
   border-radius: 8px;
 }
 
-/* Labels (top row) */
 #profile-stats dt {
   grid-row: 1;
   font-weight: 600;
 }
 
-/* Values (bottom row) */
 #profile-stats dd {
   grid-row: 2;
   margin: 0;
@@ -229,77 +218,67 @@ body.resume {
 }
 
 /* =========================
-   PROJECTS GRID (RESPONSIVE)
+   PIE CHART
 ========================= */
-
-.projects {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 1.5rem;
-  align-items: start;
+#projects-pie-plot {
+  max-width: 20em;
+  margin-block: 2em;
+  overflow: visible;
 }
 
 /* =========================
-   PROJECT CARDS
+   🔥 FLEX CONTAINER (STEP 2.3 FIX)
 ========================= */
-
-.projects article {
+.container {
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  align-items: center;
+  gap: 2rem;
+  margin-block: 1.5rem;
+}
 
-  padding: 1rem;
-  border-radius: 8px;
+/* =========================
+   LEGEND
+========================= */
+.legend {
+  flex: 1;
 
-  /* theme-aware styling */
-  background-color: canvas;
-  color: canvastext;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
+  gap: 1em;
+
+  margin-top: 1em;
+  padding: 1em;
 
   border: 1px solid color-mix(in oklch, canvastext 20%, transparent);
-
-  box-shadow: 0 2px 10px color-mix(in oklch, canvastext 10%, transparent);
+  border-radius: 8px;
 }
 
-/* =========================
-   PROJECT IMAGES
-========================= */
-
-.projects img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  display: block;
-  border-radius: 6px;
+.legend li {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
 }
 
-/* =========================
-   PROJECT TEXT
-========================= */
-
-.projects h2,
-.projects h3 {
-  margin: 0;
+.swatch {
+  width: 1em;
+  height: 1em;
+  background: var(--color);
+  display: inline-block;
+  border-radius: 3px;
+}
+path {
+  transition: 300ms;
+  cursor: pointer;
 }
 
-.projects p {
-  margin: 0;
-  line-height: 1.4;
+svg:has(path:hover) path:not(:hover) {
+  opacity: 0.5;
 }
 
-/* Year styling */
-.year {
-  font-size: 0.9rem;
-  font-weight: 600;
-  opacity: 0.7;
-  margin: 0;
+.selected {
+  --color: oklch(60% 45% 0) !important;
 }
 
-/* =========================
-   HOVER EFFECT (optional polish)
-========================= */
-
-.projects article:hover {
-  transform: translateY(-2px);
-  transition: transform 0.15s ease;
-  border-color: var(--color-accent);
+.selected:is(path) {
+  fill: var(--color);
 }

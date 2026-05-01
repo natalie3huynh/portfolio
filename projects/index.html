@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Projects</title>
+
   <link rel="stylesheet" href="../style.css">
 
   <!-- JS modules -->
@@ -14,7 +15,21 @@
 <body>
   <h1 class="projects-title">Projects</h1>
 
-  <!-- Dynamic content goes here -->
+  <!-- PIE CHART + LEGEND CONTAINER -->
+  <div class="container">
+    <svg id="projects-pie-plot" viewBox="-50 -50 100 100"></svg>
+    <ul class="legend"></ul>
+  </div>
+
+  <!-- SEARCH BAR (moved BELOW pie chart) -->
+  <input
+    class="searchBar"
+    type="search"
+    aria-label="Search projects"
+    placeholder="🔍 Search projects…"
+  />
+
+  <!-- PROJECT GRID -->
   <div class="projects"></div>
 
 </body>
