@@ -32,6 +32,7 @@ function getGridProjects(baseProjects) {
 function getPieData(baseProjects) {
   return baseProjects.filter(project => {
     let values = Object.values(project).join('\n').toLowerCase();
+    //applies search but not year
     return values.includes(query.toLowerCase());
   });
 }
@@ -92,10 +93,15 @@ function renderPieChart(baseData) {
 }
 
 /*render*/
+//purpose: recompute filtered data for grid and for pie chart 
+//while resetting and rebuilding and not updating 
+//but both interactions (pie click and search bar use it) 
+//so each would recompute filters independently 
 function renderAll() {
   const gridData = getGridProjects(projects);
+  //relies solely on query and not the selected year 
   const pieData = getPieData(projects);
-
+//rebuild pie and grid so filters are applied independently
   renderProjects(gridData, projectsContainer, 'h2');
   renderPieChart(pieData);
 }
@@ -103,6 +109,8 @@ function renderAll() {
 renderAll();
 
 /*search bar*/
+//queries what the user types, but makes the selected year null
+//so the selection is erased
 searchInput.addEventListener('change', (event) => {
   query = event.target.value;
   selectedYear = null;
