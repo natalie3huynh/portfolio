@@ -3,32 +3,26 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Meta Analysis</title>
+
   <!-- correct path to root CSS -->
   <link rel="stylesheet" href="../style.css">
 
-  <!---link to js-->
+  <!-- link to JS -->
   <script type="module" src="../global.js"></script>
 </head>
 
 <body>
-  <script type="module" src="main.js"></script>
-
   <div id="stats"></div>
 
   <h2>Commits by time of day</h2>
-
   <div id="chart"></div>
 
-  <!-- KEEP THESE TOGETHER so layout doesn't shift styling assumptions -->
-  <div class="side-panel">
-    <p id="selection-count">No commits selected</p>
-    <dl id="language-breakdown" class="stats"></dl>
-  </div>
-
-  <!-- TOOLTIP (must be separate, NOT containing other UI) -->
-  <dl id="commit-tooltip" class="info tooltip">
+  <!-- Tooltip (FIXED STRUCTURE) -->
+  <dl id="commit-tooltip" class="info tooltip" hidden>
     <dt>Commit</dt>
-    <dd><a href="" id="commit-link" target="_blank"></a></dd>
+    <dd>
+      <a href="" id="commit-link" target="_blank"></a>
+    </dd>
 
     <dt>Date</dt>
     <dd id="commit-date"></dd>
@@ -39,8 +33,10 @@
     <dt>Author</dt>
     <dd id="commit-author"></dd>
 
-    <dt>Lines</dt>
+    <dt>Lines edited</dt>
     <dd id="commit-lines"></dd>
   </dl>
+
+  <script type="module" src="main.js"></script>
 </body>
 </html>

@@ -279,71 +279,117 @@ svg:has(path:hover) path:not(:hover) {
 .selected:is(path) {
   fill: var(--color);
 }
-/* styling for commit stats */
+
 .stats {
   display: flex;
-  gap: 3rem;
-  flex-wrap: nowrap;
-  overflow-x: auto;
+  gap: 2rem;
+
   padding: 1rem 1.5rem;
-  border: 1px solid color-mix(in oklch, canvastext 20%, transparent);
-  border-radius: 12px;
-  background: canvas;
   margin-top: 1rem;
-}
 
-/* each stat becomes its own vertical block */
-.stats {
-  display: flex;
-  gap: 3rem;
-  flex-wrap: nowrap;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+
+  background: #fafafa;
+
   overflow-x: auto;
-  margin: 0;
 }
 
-/* each dt/dd pair stacks vertically */
-.stats dt {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  color: color-mix(in oklch, canvastext 60%, transparent);
-  margin-bottom: 0.25rem;
-  display: block;
-}
-
-.stats dd {
-  margin: 0;
-  font-size: 2.2rem;
-  font-weight: 300;
-  display: block;
-  color: canvastext;
-}
-
-/* IMPORTANT: force each pair to behave like a column */
 .stats dt,
 .stats dd {
   display: block;
+  margin: 0;
 }
 
-/* optional: forces grouping visually */
 .stats dt {
-  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: #6b7280;
+  margin-bottom: 0.25rem;
 }
 
-.gridlines * {
-  stroke: #e6e6e6;
-  stroke-opacity: 0.2;
-  stroke-width: 0.5px;
-}
-.gridlines path {
-  stroke: none;         /* removes axis border line */
+/* values below labels */
+.stats dd {
+  font-size: 1.6rem;
+  font-weight: 300;
+  margin-bottom: 0;
 }
 
-.gridlines text {
-  display: none;        /* hides tick labels if they show up */
+/* =========================
+   GRIDLINES STYLING
+========================= */
+.gridlines line {
+  stroke: currentColor;
+  stroke-opacity: 0.08;
+  stroke-width: 0.5;
+  shape-rendering: crispEdges;
 }
 
+/* remove the axis domain line if it's also too strong */
+.gridlines .domain {
+  stroke: none;
+}
+
+/* optional: make grid blend with theme */
+@media (prefers-color-scheme: dark) {
+  .gridlines line {
+    stroke-opacity: 0.12;
+  }
+}
+
+/* =========================
+   TOOLTIP BASE LAYOUT (.info)
+========================= */
+dl.info {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.25rem 0.75rem;
+  margin: 0;
+  padding: 0.75rem 1rem;
+
+  /* optional but recommended for readability */
+  font-size: 0.9rem;
+}
+
+/* labels (dt) */
+dl.info dt {
+  margin: 0;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: #6b7280;
+  letter-spacing: 0.05em;
+}
+
+/* values (dd) */
+dl.info dd {
+  margin: 0;
+  font-weight: 500;
+}
+
+/* =========================
+   TOOLTIP POSITIONING
+========================= */
+.tooltip {
+  position: fixed;
+  top: 1em;
+  left: 1em;
+  z-index: 10;
+
+  /* make it look like a floating panel */
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+  /* smooth appearance */
+  transition: opacity 150ms ease;
+}
+
+/* =========================
+   DOT HOVER EFFECT
+========================= */
 circle {
-  transition: 200ms;
+  transition: transform 150ms ease;
   transform-origin: center;
   transform-box: fill-box;
 }
@@ -352,76 +398,13 @@ circle:hover {
   transform: scale(1.5);
 }
 
-circle.selected {
-  fill: #ff6b6b;
-}
-
-.tooltip {
-  position: fixed;
-  z-index: 9999;
-  background: white;
-  padding: 0.75rem 1rem;
-  border-radius: 8px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-  pointer-events: none;
-}
-
-/* info grid layout */
 dl.info {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 0.25rem 0.75rem;
-  margin: 0;
+  /* ... other styles ... */
+  transition-duration: 500ms;
+  transition-property: opacity, visibility;
 }
 
-dl.info dt {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  color: #6b7280;
-}
-
-dl.info dd {
-  margin: 0;
-  font-weight: 500;
-}
-
-@keyframes marching-ants {
-  to {
-    stroke-dashoffset: -8; /* 5 + 3 */
-  }
-}
-
-.selection {
-  fill-opacity: 0.1;
-  stroke: black;
-  stroke-opacity: 0.7;
-  stroke-dasharray: 5 3;
-  animation: marching-ants 2s linear infinite;
-}
-
-#chart {
-  width: 100%;
-  max-width: 1000px;
-  margin: 0 auto;
-  overflow: hidden;
-}
-
-#chart svg {
-  display: block;   /* FIXES inline overflow bug */
-  width: 100%;
-  height: auto;
-}
-
-/* =========================
-   LANGUAGE BREAKDOWN (fix visibility)
-========================= */
-#language-breakdown dt {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  opacity: 0.7;
-}
-
-#language-breakdown dd {
-  margin: 0;
-  font-weight: 500;
+dl.info[hidden]:not(:hover, :focus-within) {
+  opacity: 0;
+  visibility: hidden;
 }
