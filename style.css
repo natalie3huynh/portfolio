@@ -226,9 +226,6 @@ body.resume {
   overflow: visible;
 }
 
-/* =========================
-   🔥 FLEX CONTAINER (STEP 2.3 FIX)
-========================= */
 .container {
   display: flex;
   align-items: center;
@@ -281,4 +278,132 @@ svg:has(path:hover) path:not(:hover) {
 
 .selected:is(path) {
   fill: var(--color);
+}
+/*styling for commit stats*/
+.stats {
+  display: flex;
+  gap: 3rem;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding: 1rem 1.5rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background: #fafafa;
+  margin-top: 1rem;
+}
+
+/* each stat becomes its own vertical block */
+.stats {
+  display: flex;
+  gap: 3rem;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  margin: 0;
+}
+
+/* each dt/dd pair stacks vertically */
+.stats dt {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: #6b7280;
+  margin-bottom: 0.25rem;
+  display: block;
+}
+
+.stats dd {
+  margin: 0;
+  font-size: 2.2rem;
+  font-weight: 300;
+  display: block;
+}
+
+/* IMPORTANT: force each pair to behave like a column */
+.stats dt,
+.stats dd {
+  display: block;
+}
+
+/* optional: forces grouping visually */
+.stats dt {
+  margin-top: 0.5rem;
+}
+
+.gridlines * {
+  stroke: #e6e6e6;
+  stroke-opacity: 0.2;
+  stroke-width: 0.5px;
+}
+.gridlines path {
+  stroke: none;         /* removes axis border line */
+}
+
+.gridlines text {
+  display: none;        /* hides tick labels if they show up */
+}
+
+circle {
+  transition: 200ms;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+circle:hover {
+  transform: scale(1.5);
+}
+
+circle.selected {
+  fill: #ff6b6b;
+}
+
+.tooltip {
+  position: fixed;
+  z-index: 9999;
+  background: white;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  pointer-events: none;
+}
+
+/* info grid layout */
+dl.info {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.25rem 0.75rem;
+  margin: 0;
+}
+
+dl.info dt {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: #6b7280;
+}
+
+dl.info dd {
+  margin: 0;
+  font-weight: 500;
+}
+
+@keyframes marching-ants {
+  to {
+    stroke-dashoffset: -8; /* 5 + 3 */
+  }
+}
+
+.selection {
+  fill-opacity: 0.1;
+  stroke: black;
+  stroke-opacity: 0.7;
+  stroke-dasharray: 5 3;
+  animation: marching-ants 2s linear infinite;
+}
+
+#chart {
+  max-width: 750px;
+  margin: 2rem auto;
+}
+
+#chart svg {
+  width: 100%;
+  display: block;
 }
