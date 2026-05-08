@@ -11,6 +11,7 @@ let pages = [
   { url: "projects/", title: "Projects" },
   { url: "contact/", title: "Contact" },
   { url: "resume/", title: "Resume" },
+  { url: "meta/", title: "Meta Analysis" },
   { url: "https://github.com/natalie3huynh", title: "Profile" }
 ];
 

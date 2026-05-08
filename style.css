@@ -279,16 +279,16 @@ svg:has(path:hover) path:not(:hover) {
 .selected:is(path) {
   fill: var(--color);
 }
-/*styling for commit stats*/
+/* styling for commit stats */
 .stats {
   display: flex;
   gap: 3rem;
   flex-wrap: nowrap;
   overflow-x: auto;
   padding: 1rem 1.5rem;
-  border: 1px solid #e5e7eb;
+  border: 1px solid color-mix(in oklch, canvastext 20%, transparent);
   border-radius: 12px;
-  background: #fafafa;
+  background: canvas;
   margin-top: 1rem;
 }
 
@@ -305,7 +305,7 @@ svg:has(path:hover) path:not(:hover) {
 .stats dt {
   font-size: 0.75rem;
   text-transform: uppercase;
-  color: #6b7280;
+  color: color-mix(in oklch, canvastext 60%, transparent);
   margin-bottom: 0.25rem;
   display: block;
 }
@@ -315,6 +315,7 @@ svg:has(path:hover) path:not(:hover) {
   font-size: 2.2rem;
   font-weight: 300;
   display: block;
+  color: canvastext;
 }
 
 /* IMPORTANT: force each pair to behave like a column */
@@ -399,11 +400,28 @@ dl.info dd {
 }
 
 #chart {
-  max-width: 750px;
-  margin: 2rem auto;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  overflow: hidden;
 }
 
 #chart svg {
+  display: block;   /* FIXES inline overflow bug */
   width: 100%;
-  display: block;
+  height: auto;
+}
+
+/* =========================
+   LANGUAGE BREAKDOWN (fix visibility)
+========================= */
+#language-breakdown dt {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+#language-breakdown dd {
+  margin: 0;
+  font-weight: 500;
 }
