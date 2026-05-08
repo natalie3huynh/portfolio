@@ -226,6 +226,9 @@ body.resume {
   overflow: visible;
 }
 
+/* =========================
+   🔥 FLEX CONTAINER (STEP 2.3 FIX)
+========================= */
 .container {
   display: flex;
   align-items: center;
@@ -278,101 +281,4 @@ svg:has(path:hover) path:not(:hover) {
 
 .selected:is(path) {
   fill: var(--color);
-}
-/*styling for commit stats*/
-.stats {
-  display: flex;
-  gap: 3rem;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  padding: 1rem 1.5rem;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  background: #fafafa;
-  margin-top: 1rem;
-}
-
-/* each stat becomes its own vertical block */
-.stats {
-  display: flex;
-  gap: 3rem;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  margin: 0;
-}
-
-/* each dt/dd pair stacks vertically */
-.stats dt {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  color: #6b7280;
-  margin-bottom: 0.25rem;
-  display: block;
-}
-
-.stats dd {
-  margin: 0;
-  font-size: 2.2rem;
-  font-weight: 300;
-  display: block;
-}
-
-/* IMPORTANT: force each pair to behave like a column */
-.stats dt,
-.stats dd {
-  display: block;
-}
-
-/* optional: forces grouping visually */
-.stats dt {
-  margin-top: 0.5rem;
-}
-
-/*Scatterplot*/
-.gridlines line {
-  stroke: #e5e7eb;
-  stroke-opacity: 0.5;
-}
-
-.gridlines path {
-  display: none;
-}
-
-circle {
-  transition: 200ms;
-  transform-origin: center;
-  transform-box: fill-box;
-}
-
-circle:hover {
-  transform: scale(1.5);
-}
-
-.tooltip {
-  position: fixed;
-  z-index: 9999;
-  background: white;
-  padding: 0.75rem 1rem;
-  border-radius: 8px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-  pointer-events: none;
-}
-
-/* info grid layout */
-dl.info {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 0.25rem 0.75rem;
-  margin: 0;
-}
-
-dl.info dt {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  color: #6b7280;
-}
-
-dl.info dd {
-  margin: 0;
-  font-weight: 500;
 }
