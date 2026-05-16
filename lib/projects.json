@@ -15,7 +15,7 @@
     "title": "Bike Traffic Map",
     "year": 2026,
     "description": "Interactive visualization of BlueBikes traffic flow using Mapbox + D3.",
-    "image": "./images/map.png",
+    "image": "/portfolio/images/map.png",
     "url": "https://natalie3huynh.github.io/bikewatching/"
     },
     {
