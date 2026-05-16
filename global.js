@@ -77,7 +77,6 @@ document.body.prepend(nav);
 for (let p of pages) {
   let url = p.url;
 
-
   url = !url.startsWith("http") ? BASE_PATH + url : url;
 
   //link element
@@ -121,15 +120,12 @@ form?.addEventListener("submit", (event) => {
 //step 1.2
 export async function fetchJSON(url) {
   try {
-    // Fetch the JSON file from the given URL
     const response = await fetch(url);
-    
-    //error handling
+
     if (!response.ok) {
       throw new Error(`Failed to fetch projects: ${response.statusText}`);
     }
 
-    //data parsing
     const data = await response.json();
     return data;
 
@@ -138,46 +134,43 @@ export async function fetchJSON(url) {
   }
 }
 
-//better testing
-// fetchJSON('../lib/projects.json').then(data => {
-//   console.log("DATA:", data);
-// });
-//adding project rendering function
+// ---------------- UPDATED: PROJECT RENDERING ----------------
 export function renderProjects(projects, containerElement, headingLevel = 'h2') {
-  // Validate container
   if (!containerElement) {
     console.error("Invalid container element");
     return;
   }
 
-  // Clear existing content
   containerElement.innerHTML = '';
 
-  // Handle empty data
   if (!projects || projects.length === 0) {
     containerElement.innerHTML = "<p>No projects available.</p>";
     return;
   }
 
-  // Loop through each project
   for (let project of projects) {
     const article = document.createElement('article');
 
     article.innerHTML = `
-  <${headingLevel}>${project.title}</${headingLevel}>
-  <img src="${project.image}" alt="${project.title}">
-  
-  <div class="project-info">
-    <p>${project.description}</p>
-    <p class="year">${project.year}</p>
-  </div>
-`;
+      <${headingLevel}>${project.title}</${headingLevel}>
+      <img src="${project.image}" alt="${project.title}">
+      
+      <div class="project-info">
+        <p>${project.description}</p>
+        <p class="year">${project.year}</p>
+
+        ${
+          project.url
+            ? `<p><a href="${project.url}">View Project →</a></p>`
+            : ''
+        }
+      </div>
+    `;
 
     containerElement.appendChild(article);
   }
 }
 
 export async function fetchGitHubData(username) {
-  // return statement here
   return fetchJSON(`https://api.github.com/users/${username}`);
 }

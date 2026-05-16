@@ -12,16 +12,17 @@
         "description": "Studying the spread of urban and rural typhus across Laos using GLMs, PCA, and more."
     },
     {
+    "title": "Bike Traffic Map",
+    "year": 2026,
+    "description": "Interactive visualization of BlueBikes traffic flow using Mapbox + D3.",
+    "image": "/images/map.png",
+    "url": "https://natalie3huynh.github.io/bikewatching/"
+    },
+    {
         "title": "UCLA Nanovation: Nanotechnology Design",
         "year": 2022,
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Designing cold chain transport solutions for the biopharma industry."
-    },
-    {
-        "title": "Optio, a. Asperiores, deserunt?",
-        "year": "2022",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Animi doloribus delectus in, aut esse rerum rem iure nam ut sequi quis dolorem vitae cum, laborum excepturi, perspiciatis eos suscipit expedita praesentium quos optio. Quis similique perspiciatis excepturi id."
     },
     {
         "title": "Hic aliquam perferendis reprehenderit!",
