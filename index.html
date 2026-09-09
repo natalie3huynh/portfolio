@@ -514,6 +514,43 @@
     display:flex;
     flex-direction:column;
     gap:6px;
+    grid-column:1;
+  }
+  .work-deck{
+    grid-column:1;
+    margin-top:18px;
+    border:2px solid var(--black);
+    border-radius:14px;
+    overflow:hidden;
+    background:var(--paper);
+  }
+  .work-deck iframe{
+    width:100%;
+    height:190px;
+    display:block;
+    border:0;
+  }
+  .work-deck-controls{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:8px;
+    padding:6px 8px;
+    border-top:1px solid var(--line);
+  }
+  .work-deck-controls button{
+    border:1px solid var(--black);
+    background:var(--paper);
+    color:var(--black);
+    border-radius:4px;
+    padding:3px 8px;
+    cursor:pointer;
+    font:600 0.72rem 'Space Grotesk', sans-serif;
+  }
+  .work-deck-controls button:hover{ background:var(--yellow); }
+  .work-deck-page{
+    font:600 0.72rem 'Space Grotesk', sans-serif;
+    color:rgba(23,21,18,0.58);
   }
   .work-tab{
     display:flex;
@@ -547,7 +584,7 @@
   }
   .work-tab.active span{ color:var(--green); }
 
-  .work-panels{ position:relative; min-height:0; }
+  .work-panels{ position:relative; min-height:0; grid-column:2; grid-row:1 / span 2; }
   .work-panel{
     display:none;
     background:var(--paper);
@@ -1065,7 +1102,10 @@
     .about-grid{ grid-template-columns:1fr; gap:34px; }
     .work-item{ grid-template-columns: 60px 1fr; grid-template-areas: "year title" "year desc" "arrow arrow"; row-gap:6px; }
     .work-interactive{ grid-template-columns:1fr; }
-    .work-tabs{ flex-direction:row; overflow-x:auto; gap:8px; padding-bottom:4px; }
+    .work-tabs{ grid-column:1; flex-direction:row; overflow-x:auto; gap:8px; padding-bottom:4px; }
+    .work-panels{ grid-column:1; grid-row:auto; }
+    .work-deck{ margin-top:10px; }
+    .work-deck iframe{ height:220px; }
     .work-tab{ border-left:none; border-bottom:3px solid transparent; border-radius:10px 10px 0 0; white-space:nowrap; }
     .work-tab.active{ border-left-color:transparent; border-bottom-color:var(--green); }
     .project-grid{ grid-template-columns:1fr; }
@@ -1194,6 +1234,14 @@
         <button class="work-tab active" data-target="w1" role="tab" aria-selected="true">Niagara Bottling<span>2025–Present</span></button>
         <button class="work-tab" data-target="w2" role="tab" aria-selected="false">National Institutes of Health<span>2024</span></button>
         <button class="work-tab" data-target="w3" role="tab" aria-selected="false">UCSD Career Center<span>2022–25</span></button>
+      </div>
+      <div class="work-deck" aria-label="Niagara Bottling slide deck">
+        <iframe id="workDeckFrame" src="slides/Presentation%20Structure-%20Natalie%20Huynh.pdf#page=1&amp;view=FitH" title="Niagara Bottling presentation slide deck"></iframe>
+        <div class="work-deck-controls">
+          <button type="button" id="workDeckPrev" aria-label="Previous slide">←</button>
+          <span class="work-deck-page" id="workDeckPage">1 / 28</span>
+          <button type="button" id="workDeckNext" aria-label="Next slide">→</button>
+        </div>
       </div>
       <div class="work-panels">
         <div class="work-panel active" id="w1">
@@ -1576,6 +1624,29 @@
 
   buildBoard();
   buildKeyboard();
+})();
+
+// ---------- Niagara slide deck ----------
+(function(){
+  var frame = document.getElementById('workDeckFrame');
+  var prev = document.getElementById('workDeckPrev');
+  var next = document.getElementById('workDeckNext');
+  var pageLabel = document.getElementById('workDeckPage');
+  if(!frame || !prev || !next || !pageLabel) return;
+
+  var deckUrl = 'slides/Presentation%20Structure-%20Natalie%20Huynh.pdf';
+  var page = 1;
+  var pageCount = 28;
+  function showPage(nextPage){
+    page = Math.max(1, Math.min(pageCount, nextPage));
+    frame.src = deckUrl + '#page=' + page + '&view=FitH';
+    pageLabel.textContent = page + ' / ' + pageCount;
+    prev.disabled = page === 1;
+    next.disabled = page === pageCount;
+  }
+  prev.addEventListener('click', function(){ showPage(page - 1); });
+  next.addEventListener('click', function(){ showPage(page + 1); });
+  showPage(page);
 })();
 
 // ---------- Sticker pile ----------
