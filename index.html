@@ -527,7 +527,8 @@
   .work-deck[hidden]{ display:none; }
   .work-deck canvas{
     width:100%;
-    height:190px;
+    height:auto;
+    aspect-ratio:16 / 9;
     display:block;
     background:var(--paper);
   }
@@ -703,7 +704,7 @@
 
   /* ---------- GAME NIGHT ---------- */
   .gamenight-intro{
-    margin-bottom:36px;
+    margin-bottom:20px;
     max-width:none;
   }
   .gamenight-copy{
@@ -754,16 +755,16 @@
     background:var(--paper);
     border:2px solid var(--black);
     border-radius:20px;
-    padding:24px;
+    padding:18px;
     box-shadow:6px 6px 0 var(--black);
   }
   .bj-felt{
     background:rgba(32,173,51,0.07);
     border:1.5px dashed rgba(32,173,51,0.35);
     border-radius:14px;
-    padding:24px;
+    padding:16px;
   }
-  .bj-row{ margin-bottom:20px; }
+  .bj-row{ margin-bottom:14px; }
   .bj-row:last-child{ margin-bottom:0; }
   .bj-row-label{
     display:flex;
@@ -787,7 +788,7 @@
   .bj-cards{
     display:flex;
     align-items:flex-end;
-    min-height:100px;
+    min-height:80px;
   }
   .bj-card{
     width:64px;
@@ -805,7 +806,7 @@
     display:flex;
     gap:10px;
     flex-wrap:wrap;
-    margin-top:24px;
+    margin-top:14px;
   }
   .btn-sm{
     padding:10px 20px;
@@ -986,8 +987,8 @@
     position:absolute;
     top:50%;
     left:50%;
-    width:700px;
-    height:700px;
+    width:620px;
+    height:620px;
     max-width:none;
     transform:translate(-50%, -50%);
     display:block;
@@ -995,8 +996,8 @@
     filter: drop-shadow(3px 4px 0 rgba(23,21,18,0.18));
   }
   .sticker-current img.sticker-image--compact{
-    width:500px;
-    height:500px;
+    width:440px;
+    height:440px;
   }
   .sticker-current img.sticker-image--top{ animation: sticker-pop .35s cubic-bezier(.34,1.56,.64,1); }
   @keyframes sticker-pop{
@@ -1087,7 +1088,8 @@
   }
   #about.page-section{ min-height:0; }
   #gamenight.page-section{
-    padding-bottom:28px;
+    min-height:calc(100vh - var(--header-h, 90px) + 40px);
+    padding-bottom:40px;
   }
 
   footer{
@@ -1113,7 +1115,6 @@
     .work-tabs{ grid-column:1; flex-direction:row; overflow-x:auto; gap:8px; padding-bottom:4px; }
     .work-panels{ grid-column:1; grid-row:auto; }
     .work-deck{ margin-top:10px; }
-    .work-deck canvas{ height:220px; }
     .work-tab{ border-left:none; border-bottom:3px solid transparent; border-radius:10px 10px 0 0; white-space:nowrap; }
     .work-tab.active{ border-left-color:transparent; border-bottom-color:var(--green); }
     .project-grid{ grid-template-columns:1fr; }
@@ -1123,7 +1124,7 @@
     .gamenight-copy h3,
     .gamenight-copy p{ grid-column:1; }
     .gamenight-ace{ grid-column:1; grid-row:auto; }
-    .blackjack{ padding:22px; }
+    .blackjack{ padding:16px; }
     .bj-card{ width:52px; margin-left:-16px; }
     .contact-box{ padding:16px 20px 2px; }
     .contact-walker{ width:42px; }
