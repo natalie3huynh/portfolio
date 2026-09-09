@@ -552,6 +552,12 @@
     font:600 0.72rem 'Space Grotesk', sans-serif;
     color:rgba(23,21,18,0.58);
   }
+  .work-deck-link{
+    display:block;
+    padding:0 8px 7px;
+    color:var(--black);
+    font:600 0.68rem 'Space Grotesk', sans-serif;
+  }
   .work-tab{
     display:flex;
     align-items:center;
@@ -1236,12 +1242,13 @@
         <button class="work-tab" data-target="w3" role="tab" aria-selected="false">UCSD Career Center<span>2022–25</span></button>
       </div>
       <div class="work-deck" aria-label="Niagara Bottling slide deck">
-        <iframe id="workDeckFrame" src="slides/Presentation%20Structure-%20Natalie%20Huynh.pdf#page=1&amp;view=FitH" title="Niagara Bottling presentation slide deck"></iframe>
+        <iframe id="workDeckFrame" src="./slides/niagara-deck.pdf#page=1&amp;view=FitH" title="Niagara Bottling presentation slide deck"></iframe>
         <div class="work-deck-controls">
           <button type="button" id="workDeckPrev" aria-label="Previous slide">←</button>
           <span class="work-deck-page" id="workDeckPage">1 / 28</span>
           <button type="button" id="workDeckNext" aria-label="Next slide">→</button>
         </div>
+        <a class="work-deck-link" href="./slides/niagara-deck.pdf" target="_blank" rel="noopener">Open full slide deck</a>
       </div>
       <div class="work-panels">
         <div class="work-panel active" id="w1">
@@ -1634,7 +1641,7 @@
   var pageLabel = document.getElementById('workDeckPage');
   if(!frame || !prev || !next || !pageLabel) return;
 
-  var deckUrl = 'slides/Presentation%20Structure-%20Natalie%20Huynh.pdf';
+  var deckUrl = './slides/niagara-deck.pdf';
   var page = 1;
   var pageCount = 28;
   function showPage(nextPage){
