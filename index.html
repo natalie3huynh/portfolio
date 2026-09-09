@@ -19,7 +19,7 @@
 
   *{ box-sizing:border-box; margin:0; padding:0; }
 
-  html{ scroll-behavior:smooth; scroll-snap-type: y proximity; }
+  html{ scroll-behavior:smooth; scroll-snap-type:none; }
 
   body{
     background:var(--beige);
@@ -135,7 +135,7 @@
     grid-template-columns: 1.35fr 0.9fr;
     gap:36px;
     align-items:start;
-    padding:36px 0 340px;
+    padding:36px 0 180px;
   }
 
   .hero-waver{
@@ -380,7 +380,7 @@
     display:flex;
     flex-direction:column;
     justify-content:flex-start;
-    scroll-snap-align:start;
+    scroll-snap-align:none;
     scroll-margin-top:var(--header-h, 90px);
     box-sizing:border-box;
   }
@@ -546,7 +546,7 @@
   }
   .work-tab.active span{ color:var(--green); }
 
-  .work-panels{ position:relative; min-height:220px; }
+  .work-panels{ position:relative; min-height:0; }
   .work-panel{
     display:none;
     background:var(--paper);
@@ -922,7 +922,7 @@
   .sticker-pile{
     position:relative;
     width:300px;
-    height:300px;
+    height:260px;
     flex-shrink:0;
     background:none;
     border:none;
