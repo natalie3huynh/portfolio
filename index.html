@@ -524,11 +524,12 @@
     overflow:hidden;
     background:var(--paper);
   }
-  .work-deck iframe{
+  .work-deck[hidden]{ display:none; }
+  .work-deck canvas{
     width:100%;
     height:190px;
     display:block;
-    border:0;
+    background:var(--paper);
   }
   .work-deck-controls{
     display:flex;
@@ -677,8 +678,8 @@
     opacity:1;
     transform:translateY(0);
   }
-  .story-step:nth-child(2),
-  .story-step:nth-child(3){ transition-delay:0s; }
+  .story-step:nth-child(2){ transition-delay:.7s; }
+  .story-step:nth-child(3){ transition-delay:1.4s; }
   .story-num{
     font-family:'Newsreader', serif;
     font-style:italic;
@@ -1084,6 +1085,7 @@
     min-height:calc(100vh - var(--header-h, 90px));
     padding:18px 0 4px;
   }
+  #about.page-section{ min-height:0; }
   #gamenight.page-section{
     padding-bottom:28px;
   }
@@ -1111,7 +1113,7 @@
     .work-tabs{ grid-column:1; flex-direction:row; overflow-x:auto; gap:8px; padding-bottom:4px; }
     .work-panels{ grid-column:1; grid-row:auto; }
     .work-deck{ margin-top:10px; }
-    .work-deck iframe{ height:220px; }
+    .work-deck canvas{ height:220px; }
     .work-tab{ border-left:none; border-bottom:3px solid transparent; border-radius:10px 10px 0 0; white-space:nowrap; }
     .work-tab.active{ border-left-color:transparent; border-bottom-color:var(--green); }
     .project-grid{ grid-template-columns:1fr; }
@@ -1242,7 +1244,7 @@
         <button class="work-tab" data-target="w3" role="tab" aria-selected="false">UCSD Career Center<span>2022–25</span></button>
       </div>
       <div class="work-deck" aria-label="Niagara Bottling slide deck">
-        <iframe id="workDeckFrame" src="./slides/niagara-deck.pdf#page=1&amp;view=FitH" title="Niagara Bottling presentation slide deck"></iframe>
+        <canvas id="workDeckFrame" aria-label="Niagara Bottling presentation slide deck"></canvas>
         <div class="work-deck-controls">
           <button type="button" id="workDeckPrev" aria-label="Previous slide">←</button>
           <span class="work-deck-page" id="workDeckPage">1 / 28</span>
@@ -1434,6 +1436,7 @@
   </footer>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 <script>
 (function(){
   var WORDS = ["SMILE","CRAFT","DOODLE".slice(0,5),"PAPER","GRAIN","STORY","QUIRK","BLOOM","SPARK","CANDY"];
@@ -1639,21 +1642,38 @@
   var prev = document.getElementById('workDeckPrev');
   var next = document.getElementById('workDeckNext');
   var pageLabel = document.getElementById('workDeckPage');
-  if(!frame || !prev || !next || !pageLabel) return;
+  if(!frame || !prev || !next || !pageLabel || !window.pdfjsLib) return;
 
   var deckUrl = './slides/niagara-deck.pdf';
   var page = 1;
   var pageCount = 28;
+  var pdfDocument;
+  pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
   function showPage(nextPage){
     page = Math.max(1, Math.min(pageCount, nextPage));
-    frame.src = deckUrl + '?slide=' + page + '#page=' + page + '&view=FitH';
     pageLabel.textContent = page + ' / ' + pageCount;
     prev.disabled = page === 1;
     next.disabled = page === pageCount;
+    if(!pdfDocument) return;
+    pdfDocument.getPage(page).then(function(pdfPage){
+      var baseViewport = pdfPage.getViewport({scale:1});
+      var scale = frame.clientWidth / baseViewport.width;
+      var viewport = pdfPage.getViewport({scale:scale});
+      var pixelRatio = window.devicePixelRatio || 1;
+      var context = frame.getContext('2d');
+      frame.width = Math.floor(viewport.width * pixelRatio);
+      frame.height = Math.floor(viewport.height * pixelRatio);
+      context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+      return pdfPage.render({canvasContext:context, viewport:viewport}).promise;
+    });
   }
   prev.addEventListener('click', function(){ showPage(page - 1); });
   next.addEventListener('click', function(){ showPage(page + 1); });
-  showPage(page);
+  pdfjsLib.getDocument(deckUrl).promise.then(function(document){
+    pdfDocument = document;
+    pageCount = document.numPages;
+    showPage(page);
+  });
 })();
 
 // ---------- Sticker pile ----------
@@ -1694,6 +1714,7 @@
 (function(){
   var tabs = document.querySelectorAll('.work-tab');
   var panels = document.querySelectorAll('.work-panel');
+  var deck = document.querySelector('.work-deck');
   tabs.forEach(function(tab){
     tab.addEventListener('click', function(){
       tabs.forEach(function(t){ t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
@@ -1702,6 +1723,7 @@
       tab.setAttribute('aria-selected','true');
       var target = document.getElementById(tab.getAttribute('data-target'));
       if(target){ target.classList.add('active'); }
+      if(deck) deck.hidden = tab.getAttribute('data-target') !== 'w1';
     });
   });
 })();
@@ -1919,27 +1941,12 @@
 
   steps.forEach(function(s){ obs.observe(s); });
 
-  // Also reveal immediately if a tab switch brings a panel into view
-  function revealStory(target){
-    var targetSteps = target.querySelectorAll('.story-step');
-    targetSteps.forEach(function(step, index){
-      step.classList.remove('in-view');
-      setTimeout(function(){ step.classList.add('in-view'); }, index * 700);
-    });
-  }
-
-  document.querySelectorAll('.work-tab').forEach(function(tab){
-    tab.addEventListener('click', function(){
-      var target = document.getElementById(tab.getAttribute('data-target'));
-      if(target){
-        revealStory(target);
-      }
-    });
-  });
 })();
 
 // ---------- Measure header height for scroll-snap offset ----------
 (function(){
+  if('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  window.addEventListener('load', function(){ window.scrollTo(0, 0); });
   var header = document.querySelector('.site-header');
   if(!header) return;
   function setHeaderHeight(){
