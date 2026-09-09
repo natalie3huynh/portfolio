@@ -20,6 +20,7 @@
   *{ box-sizing:border-box; margin:0; padding:0; }
 
   html{ scroll-behavior:smooth; scroll-snap-type:none; }
+  html{ font-size:90%; }
 
   body{
     background:var(--beige);
@@ -135,7 +136,7 @@
     grid-template-columns: 1.35fr 0.9fr;
     gap:36px;
     align-items:start;
-    padding:36px 0 180px;
+    padding:18px 0 60px;
   }
 
   .hero-waver{
@@ -370,7 +371,7 @@
   .game-reset:hover{ color:var(--black); }
 
   /* ---------- SECTIONS ---------- */
-  section{ padding:44px 0; }
+  section{ padding:18px 0; }
   .section-line{
     border-top:2px solid var(--line);
   }
@@ -552,7 +553,7 @@
     background:var(--paper);
     border:2px solid var(--black);
     border-radius:20px;
-    padding:32px;
+    padding:22px;
     animation: panel-in .35s ease;
   }
   .work-panel.active{ display:block; }
@@ -709,7 +710,7 @@
     background:var(--paper);
     border:2px solid var(--black);
     border-radius:20px;
-    padding:34px;
+    padding:24px;
     box-shadow:6px 6px 0 var(--black);
   }
   .bj-felt{
@@ -922,7 +923,7 @@
   .sticker-pile{
     position:relative;
     width:300px;
-    height:260px;
+    height:180px;
     flex-shrink:0;
     background:none;
     border:none;
@@ -987,12 +988,12 @@
     color:var(--paper);
     border-radius:20px;
     width:100%;
-    padding:36px 56px 8px;
+    padding:18px 30px 2px;
     display:flex;
     flex-direction:column;
     justify-content:flex-start;
     align-items:flex-start;
-    gap:10px;
+    gap:6px;
     overflow:hidden;
   }
   .contact-box h2{
@@ -1038,10 +1039,10 @@
 
   #contact.page-section{
     min-height:0;
-    padding:32px 0 12px;
+    padding:18px 0 4px;
   }
   #gamenight.page-section{
-    padding-bottom:48px;
+    padding-bottom:28px;
   }
 
   footer{
@@ -1057,7 +1058,7 @@
   @media (max-width: 980px){
     .hero{
       grid-template-columns: 1fr;
-      padding-bottom:120px;
+      padding-bottom:50px;
     }
     .hero-waver{ width:210px; }
     .game-widget{ position:static; max-width:320px; margin:0 auto; }
@@ -1076,7 +1077,7 @@
     .gamenight-ace{ grid-column:1; grid-row:auto; }
     .blackjack{ padding:22px; }
     .bj-card{ width:52px; margin-left:-16px; }
-    .contact-box{ padding:30px 30px 8px; }
+    .contact-box{ padding:16px 20px 2px; }
     .contact-walker{ width:42px; }
     .contact-links{ align-items:flex-start; }
   }
