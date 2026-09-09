@@ -987,8 +987,8 @@
     position:absolute;
     top:50%;
     left:50%;
-    width:620px;
-    height:620px;
+    width:480px;
+    height:480px;
     max-width:none;
     transform:translate(-50%, -50%);
     display:block;
@@ -996,8 +996,8 @@
     filter: drop-shadow(3px 4px 0 rgba(23,21,18,0.18));
   }
   .sticker-current img.sticker-image--compact{
-    width:440px;
-    height:440px;
+    width:340px;
+    height:340px;
   }
   .sticker-current img.sticker-image--top{ animation: sticker-pop .35s cubic-bezier(.34,1.56,.64,1); }
   @keyframes sticker-pop{
@@ -1086,10 +1086,10 @@
     min-height:calc(100vh - var(--header-h, 90px));
     padding:18px 0 4px;
   }
-  #about.page-section{ min-height:0; }
+  #about.page-section{ min-height:calc(100vh - var(--header-h, 90px)); }
   #gamenight.page-section{
-    min-height:calc(100vh - var(--header-h, 90px) + 40px);
-    padding-bottom:40px;
+    min-height:calc(100vh - var(--header-h, 90px) + 120px);
+    padding-bottom:64px;
   }
 
   footer{
