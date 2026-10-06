@@ -741,13 +741,15 @@
     display:grid;
     grid-template-columns: 1.1fr 0.9fr;
     gap:32px;
-    align-items:start;
+    align-items:center;
   }
   .gamenight-widgets .carousel{
-    margin-top:0;
-    height:100%;
+    width:min(100%, 520px);
+    margin:0 auto;
+    height:420px;
     display:flex;
     flex-direction:column;
+    justify-self:center;
   }
   .gamenight-widgets .carousel-track{ flex:1; }
 
@@ -767,12 +769,12 @@
   }
   .carousel-slide{
     min-width:100%;
-    aspect-ratio:16/8;
+    height:100%;
     display:flex;
     align-items:center;
     justify-content:center;
     box-sizing:border-box;
-    padding:20px;
+    padding:0;
     background:var(--paper);
   }
   .carousel-slide span{
@@ -786,7 +788,8 @@
   .carousel-slide img{
     width:100%;
     height:100%;
-    object-fit:cover;
+    object-fit:contain;
+    object-position:center;
     display:block;
   }
   .carousel-arrow{
@@ -1026,6 +1029,10 @@
 
   /* ---------- RESPONSIVE ---------- */
   @media (max-width: 980px){
+    .gamenight-widgets .carousel{
+      width:min(100%, 480px);
+      height:360px;
+    }
     .hero{
       grid-template-columns: 1fr;
       padding-bottom:50px;
