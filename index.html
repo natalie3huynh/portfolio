@@ -738,20 +738,19 @@
   .gamenight-ace img{ width:100%; display:block; }
 
   .gamenight-widgets{
-    display:grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap:32px;
-    align-items:center;
+    display:flex;
+    justify-content:center;
   }
   .gamenight-widgets .carousel{
-    width:min(100%, 520px);
-    margin:0 auto;
-    height:420px;
-    display:flex;
-    flex-direction:column;
-    justify-self:center;
+    width:min(100%, 760px);
+    height:460px;
+    margin:0;
+    display:grid;
+    grid-template-rows:minmax(0, 1fr) auto;
   }
-  .gamenight-widgets .carousel-track{ flex:1; }
+  .gamenight-widgets .carousel-track{
+    min-height:0;
+  }
 
 
   /* ---------- GAME NIGHT CAROUSEL ---------- */
@@ -768,8 +767,9 @@
     transition:transform .4s ease;
   }
   .carousel-slide{
-    min-width:100%;
+    flex:0 0 100%;
     height:100%;
+    min-height:0;
     display:flex;
     align-items:center;
     justify-content:center;
@@ -1030,8 +1030,8 @@
   /* ---------- RESPONSIVE ---------- */
   @media (max-width: 980px){
     .gamenight-widgets .carousel{
-      width:min(100%, 480px);
-      height:360px;
+      width:min(100%, 600px);
+      height:380px;
     }
     .hero{
       grid-template-columns: 1fr;
@@ -1049,7 +1049,6 @@
     .work-tab.active{ border-left-color:transparent; border-bottom-color:var(--green); }
     .project-grid{ grid-template-columns:1fr; }
     .project-card--wide{ flex-direction:column; align-items:flex-start; text-align:left; }
-    .gamenight-widgets{ grid-template-columns:1fr; }
     .gamenight-copy{ grid-template-columns:1fr; row-gap:12px; }
     .gamenight-copy h3,
     .gamenight-copy p{ grid-column:1; }
